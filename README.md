@@ -1,7 +1,7 @@
 # Blog-express
 Created with express and mongodb as a database.
 
-feature:
+features:
 
 Login authentication, access control, Create, Update, and Delete Article.
 
