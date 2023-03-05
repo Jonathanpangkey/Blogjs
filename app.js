@@ -6,21 +6,19 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
-const config = require('./config/database');
+require('dotenv').config();
 const passport = require('passport')
 
 // set db connection
-mongoose.connect(config.database);
-let db = mongoose.connection;
-
-// check connection
-db.once('open',function(){
-    console.log('Connected');
-});
-
-// check for error
-db.on('error',function(err){
-    console.log(err);
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => {
+  console.log('Connected to MongoDB Atlas');
+})
+.catch((err) => {
+  console.error(err);
 });
 
 // inital app
